@@ -75,6 +75,8 @@ export const deleteImage = async (req, res) => {
         const dirFile = path.join(__dirname, `../uploads/${image.name}`);
         fs.unlinkSync(dirFile);
 
+        await image.remove()
+
         console.log(`Imagen eliminada: ${name}`);
 
         res.json({ delete: true, image: image });
